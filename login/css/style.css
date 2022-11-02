@@ -1,0 +1,232 @@
+*{
+    font-family: 'Lexend', sans-serif;
+}
+
+body, html{
+    position: relative;
+    height: auto;
+    background-color: #e2e2e2;
+    padding: 0;
+    margin: 0;
+}
+
+.content{    
+    background-color: #e2e2e2;
+    display: flex;
+    clear: both;
+}
+header{
+    background-color: #1D2327;
+    width: 200px;/* 
+    border: red solid 1px; */
+    
+    height: 100%;
+    
+}
+.main{
+    margin: auto;
+    width: 80%;
+}
+.main main{
+    padding-top: 40px;
+    width: 100%;
+    margin: auto;
+}
+nav{
+    z-index: 49;
+    background-color: #1D2327;
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    border-right: 5px solid #1a6197;
+}
+nav .sessao{
+    background-color: #26333b;
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    font-size: 0.9em;
+}
+.sessao .nome{
+    margin: 5px;
+    padding: 5px;
+    background-color: #1D2327;
+    display: block;
+    width: 100%;
+}
+.sessao .sair{
+    margin: 5px;
+    display: block;
+    width: 100%;
+}
+.sair button{
+    font-size: 0.9em;
+    text-transform: uppercase;
+}
+nav ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+nav li{
+    background-color: #1D2327;
+    color: #f3f3f3;
+    padding: 15px;
+    transition: .1s;
+    display: flex;
+    align-items: center;
+    font-size: 0.8em;
+    font-weight: 200;
+    text-transform: capitalize;
+    border-bottom: 3px ridge #26333b;
+}
+nav li:hover{
+    font-weight: 700;
+    color: #00a2ff;
+    cursor: pointer;
+}
+nav a{
+    background-color: transparent;
+    color: inherit;
+    text-decoration: none;
+}
+#itensMenu{
+    padding-left: 10px;
+}
+
+main{
+    position: relative;  
+    background-color: #e2e2e2;
+}
+main .post{
+    background-color: white;
+    margin: auto;
+    width: 95%;
+    border-radius: 8px;
+    padding: 1%;
+    margin-bottom: 30px;
+    border: 1px solid #cccccc;
+}
+.linha1{
+    width: 100%;
+    display: flex;
+}
+.linha1 .titulo{
+    background-color: white;
+    text-transform: uppercase;
+    font-size: 1.8em;
+    font-weight: 600;
+    width: 100%;
+}
+.linha1 .botoes{
+    display: inline-flex;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    padding: 0;
+}
+.botoes .btn{
+    background-color: #383d41;
+}
+.linha2{
+    display: flex;
+    align-items: center;
+    font-weight: 300;
+}
+.linha2 .dataDia{
+    width: 28px;
+    border: none;
+    font-weight: 300;/* 
+    text-align: right; */
+}
+.linha2 .dataMes{
+    text-align: center;
+    width: 80px;
+    border: none;
+    font-weight: 300;
+}
+.linha2 .dataAno{
+    width: 50px;
+    border: none;
+    font-weight: 300;
+}
+.linha2 .hora{
+    width: 23px;
+    border: none;
+    font-weight: 300;
+    text-align: right;
+}
+.dataDia:hover,
+.dataMes:hover,
+.dataAno:hover,
+.hora:hover{
+    background-color: #dbdbdb;
+    border: none;
+}
+label{
+    font-weight: bold;
+}
+
+.cadastro{
+    margin: auto;
+    width: 90%;
+    background-color: white;
+    padding: 40px;
+    margin-bottom: 40px;
+    border-radius: 15px;
+    border: 2px solid #cccccc;
+}
+
+@media (max-width: 980px) {
+    /* .main main{
+        padding-left: 200px;
+    } */
+    .linha1 .titulo,
+    .linha1 .botoes{
+        width: 100%;
+    }
+    .linha1{
+        display: block;
+    }
+    
+    main .titulo{
+        padding: 0;
+        padding-top: 10px;
+        margin: auto;
+        text-align: center;
+    }
+    main .botoes{
+        background-color: white;
+        margin: auto;
+        height: 30px;
+    }
+}
+
+@media (max-width: 850px) {
+    #itensMenu{
+        display: none;
+    }
+    header, nav{
+        width: 50px;
+    }
+    .content .sessao{
+        display: none;
+    }
+    .main{
+        width: 100%;
+    }
+    .main main{
+        width: 100%;
+    }    
+}
+
+@media (max-width: 480px) {
+    header, nav{
+        display: none;
+    }
+}
