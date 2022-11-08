@@ -23,7 +23,7 @@ class User {
         $result = mysqli_query($conexao, $insert);
         mysqli_close($conexao);
         header("Location: newuser.php");
-
+        die();
     }
 
     public function loginUser($usuario, $senha) {
@@ -54,6 +54,7 @@ class User {
             $_SESSION["usuario"] = $dados[3];
             mysqli_close($conexao);
             header("Location:http://localhost/projetos/site_raiz/login/newuser.php");
+            die();
         } else {
             echo "Usuário ou senha não conferem /// SENHA ERRADA <br>";
         }

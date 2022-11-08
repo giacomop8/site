@@ -63,11 +63,7 @@
             $contador = count($posts);
 
             for($i=0; $i<$contador; $i++):            
-                $post = $posts[$i];                
-
-                setlocale(LC_ALL, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
-                date_default_timezone_set('America/Sao_Paulo');
-
+                $post = $posts[$i];
                 $data = new DateTime($post['date']);
 
                 $dia = strftime('%d', $data->getTimestamp());
@@ -75,7 +71,7 @@
                 $ano = strftime('%Y', $data->getTimestamp());
             ?>
                 <div class="post-box">
-                    <a href="<?=$SITE_RAIZ?>post.php?id=<?= $post['id_post'] ?>"><img src="<?=$SITE_RAIZ?>img/posts/<?= $post['title'] ?>.jpg" alt="<?= $post['title'] ?>"></a>
+                    <a href="<?=$SITE_RAIZ?>post.php?id=<?= $post['id_post'] ?>"><img src="http://<?=$_SERVER['SERVER_NAME']?>/projetos/site_raiz/uploads/posts/<?=$post['title']?>.<?=$post['extension']?>" alt="<?= $post['title'] ?>"></a>
                     <div class="post-title">
                         <a href="<?=$SITE_RAIZ?>post.php?id=<?= $post['id_post'] ?>"><?= strtoupper($post['title']) ?></a> <br>
                     </div>
@@ -95,10 +91,6 @@
         <?php else: ?>
             <?php for($i=0; $i<6; $i++):            
                 $post = $posts[$i];
-
-                setlocale(LC_ALL, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
-                date_default_timezone_set('America/Sao_Paulo');
-
                 $data = new DateTime($post['date']);
 
                 $dia = strftime('%d', $data->getTimestamp());
@@ -106,7 +98,7 @@
                 $ano = strftime('%Y', $data->getTimestamp());
             ?>
                 <div class="post-box">
-                    <a href="<?=$SITE_RAIZ?>post.php?id=<?= $post['id_post'] ?>"><img src="<?=$SITE_RAIZ?>img/posts/<?= $post['title'] ?>.jpg" alt="<?= $post['title'] ?>"></a>
+                    <a href="<?=$SITE_RAIZ?>post.php?id=<?= $post['id_post'] ?>"><img src="http://<?=$_SERVER['SERVER_NAME']?>/projetos/site_raiz/uploads/posts/<?=$post['title']?>.<?=$post['extension']?>" alt="<?= $post['title'] ?>"></a>
                     <div class="post-title">
                         <a href="<?=$SITE_RAIZ?>post.php?id=<?= $post['id_post'] ?>"><?= $post['title'] ?></a> <br>
                     </div>

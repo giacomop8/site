@@ -9,7 +9,10 @@ include_once("templates/header.php");
 if(isset($_GET['id'])){
 
     $id = $_GET['id'];
-    $selectId = "SELECT * FROM posts WHERE id_post='$id'";
+    $selectId = "SELECT p.id_post, p.title, p.description, p.text, p.date, i.name_image, i.extension, i.path
+                            FROM posts p
+                            INNER JOIN images i ON p.id_post = i.id_post
+                            WHERE p.id_post='$id'";
     $query = mysqli_query($conexao, $selectId);    
     $post = mysqli_fetch_assoc($query);
 }
@@ -33,7 +36,7 @@ if(isset($_GET['id'])){
                 
                 <div class="form-group">
                     <label>Texto completo:</label>
-                    <textarea type="text" id="trumbowyg-editor" name="texto" class="form-control" rows="10" placeholder="Digite o texto completo da postagem" value="<?=$post['text']?>"></textarea>
+                    <textarea type="text" id="trumbowyg-editor" name="texto" class="form-control" rows="10" placeholder="Digite o texto completo da postagem"><?=$post['text']?></textarea>
                 </div><br>
 
                 <div class="form-group">

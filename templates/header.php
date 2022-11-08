@@ -1,12 +1,20 @@
 <?php 
 
-require_once "config.php";
-require_once RAIZ ."/login/conexao.php";
+include_once "config.php";
+include_once RAIZ ."/login/conexao.php";
 
-$select = "SELECT * FROM posts ORDER BY date DESC";
+setlocale(LC_ALL, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+date_default_timezone_set('America/Sao_Paulo');
+
+$select = "SELECT p.id_post, p.title, p.description, p.date, i.name_image, i.extension
+            FROM posts p
+            INNER JOIN images i ON p.id_post = i.id_post
+            ORDER BY p.date DESC";
+
 $result = mysqli_query($conexao, $select);
 $row = mysqli_num_rows($result);
 $titulo = "Site";
+
 
 ?>
 

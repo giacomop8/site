@@ -19,7 +19,7 @@ if(!isset($_SESSION["logado"])) {
             <form method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label>Título:</label>
-                    <input type="text" name="titulo" class="form-control" placeholder="Digite o título da postagem">
+                    <input type="text" name="titulo" class="form-control" placeholder="Digite o título da postagem" autofocus>
                 </div><br>
 
                 <div class="form-group">

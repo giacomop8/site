@@ -1,9 +1,9 @@
 <?php
 
-require_once "config.php";
-require_once RAIZ . "/conexao.php";
-require_once RAIZ . "/class/User.php";
-require_once RAIZ . "/class/Post.php";
+include_once "config.php";
+include_once RAIZ . "/conexao.php";
+include_once RAIZ . "/class/User.php";
+include_once RAIZ . "/class/Post.php";
 
 session_start();
 
@@ -13,6 +13,7 @@ $message = array();
 
 if(!isset($_SESSION["logado"])) {
     header("Location: login.php");
+    die();  
 }
 else {
     /* VERIFICANDO SE HÁ UMA TENTATIVA DE CADASTRO DE USUARIO DO SISTEMA */
@@ -83,23 +84,39 @@ else {
             $user = new User;
             $user->loginUser($usuario, $senha);
             header("Location: newuser.php");
+            die();
         }
     }
-
-    else if (isset($_POST['editpost'])){
-
+        
+    else if(isset($_POST["editpost"])){
         $id = strval(filter_input(INPUT_POST, "id"));
-        $titulo = strval(filter_input(INPUT_POST, "titulo"));
-        $descricao = strval(filter_input(INPUT_POST, "descricao"));
-        $texto = strval(filter_input(INPUT_POST, "texto"));
-        $data = filter_input(INPUT_POST, "data");
+        $title = strval(filter_input(INPUT_POST, "titulo"));
+        $description = strval(filter_input(INPUT_POST, "descricao"));
+        $date = strval(filter_input(INPUT_POST, "data"));
+        $text = strval(filter_input(INPUT_POST, "texto"));
 
-        $edit = "UPDATE posts
-                    SET title='$titulo', description='$descricao', text='$texto', date='$data'
-                    WHERE id_post='$id'";
-        $query = mysqli_query($conexao, $edit);
-        mysqli_close($conexao);
-        header('Location:listposts.php');
+        /* VERIFICANDO SE O FORMULARIO DA POSTAGEM ESTÁ VAZIO */
+        if (empty($title) || empty($description) || empty($text)) {            
+            $message[] = "Preencha todos os campos para conseguir criar uma postagem.";
+            print_r(end($message));
+        }
+
+        /* CASO O FORMULÁRIO ESTEJA PREENCHIDO */
+        else {
+            $image = $_FILES['imagem'];
+            $extension = pathinfo($image['name'], PATHINFO_EXTENSION);
+            var_dump($image);
+        
+            if((($extension == 'jpg') || ($extension == 'png') || ($extension == 'jpeg')) || ($image['type'] == '')) {
+                $post = new Post;
+                $post->editPost($id, $title, $description, $date, $text, $image);
+            }
+            else {
+                
+                $message[] = "Insira uma imagem JPEG ou PNG";
+                print_r(end($message));
+            }                
+        }        
     }
 }
 

@@ -1,16 +1,16 @@
 <?php 
-require_once("templates/header.php"); 
+include_once("templates/header.php");
 
 if(isset($_GET['id'])) {
-    $postId = $_GET['id'];
-    
-    $select = "SELECT * FROM posts WHERE id_post='$postId'";
-    $result = mysqli_query($conexao, $select);
-    $postAtual = mysqli_fetch_assoc($result);
-    mysqli_close($conexao);
+    $id = $_GET['id'];
 
-    setlocale(LC_ALL, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
-    date_default_timezone_set('America/Sao_Paulo');
+    $select = "SELECT p.id_post, p.title, p.description, p.text, p.date, i.path, i.name_image, i.extension
+                FROM posts p
+                INNER JOIN images i ON p.id_post = i.id_post
+                WHERE p.id_post='$id'";
+
+    $query = mysqli_query($conexao, $select);
+    $postAtual = mysqli_fetch_assoc($query);
 
     $data = new DateTime($postAtual['date']);
 
@@ -30,7 +30,7 @@ if(isset($_GET['id'])) {
                 <h2><?=$postAtual['title'] ?></h2>    
                 <p class="descricao"><?=$postAtual['description'] ?></p>  
                 <p class="data"><?= $dia.' de '.$mes.', '.$ano ?></p>  
-                <img src="<?=$SITE_RAIZ?>img/posts/<?= $postAtual['title'] ?>.png" alt="<?= $postAtual['title'] ?>">        
+                <img src="http://<?=$_SERVER['SERVER_NAME']?>/projetos/site_raiz/uploads/posts/<?=$postAtual['title']?>.<?=$postAtual['extension']?>" alt="<?= $postAtual['name_image'] ?>">        
                 <p class="texto" style="font-size: 2.5em;"><?=$postAtual['text'] ?></p>
             </div>
             

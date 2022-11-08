@@ -107,7 +107,7 @@ if (isset($_POST["login"])){
                 <form action="" method="POST">
                     <div class="form-group">
                         <label>Usuário</label>
-                        <input type="text" name="usuario" class="form-control" placeholder="Digite o usuário">
+                        <input type="text" name="usuario" class="form-control" placeholder="Digite o usuário" autofocus>
                     </div><br>
     
                     <div class="form-group">
